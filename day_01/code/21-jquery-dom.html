@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>wrap demo</title>
+  <style>
+    div {
+        border: 2px solid blue;
+        margin: 2px;
+        padding: 2px;
+        width:50%;
+    }
+    .doublediv {
+        border-color: red;
+    }
+    p {
+        background: yellow;
+        margin: 4px;
+        font-size: 14px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<p>Hello</p>
+<p>Cruel</p>
+<p>World</p>
+
+
+ 
+<script>
+    $( "p" ).wrap( "<div></div>" );
+    $("p:eq(1)").html("Beautiful")
+</script>
+ 
+</body>
+</html>

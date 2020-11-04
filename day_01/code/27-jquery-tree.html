@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>children demo</title>
+  <style>
+    body {
+        font-size: 16px;
+        font-weight: bolder;
+    }
+    p {
+        margin: 5px 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<div>
+  <span>Hello</span>
+  <p class="selected">Hello Again</p>
+  <div class="selected">And Again</div>
+  <p>And One Last Time</p>
+</div>
+ 
+<script>
+    $( "div" ).children( ".selected" ).css( "color", "blue" );
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="operands">
+        <label for="ina">A = </label>
+        <input type="text" id="ina" name="ina" value="0">
+        <br><br>
+        <label for="inb">B = </label>
+        <input type="text" id="inb" name="inb" value="0">
+      </div>
+      <br>
+      <div class="ops">
+        <input type="radio" id="add" name="op" value="add">
+        <label for="add">Add</label><br>
+        <input type="radio" id="sub" name="op" value="sub">
+        <label for="sub">Subtract</label><br>
+        <input type="radio" id="mul" name="op" value="mul">
+        <label for="mul">Multiply</label><br>
+        <input type="radio" id="div" name="op" value="div">
+        <label for="div">Divide</label><br>
+      </div>
+    </div>
+    <br>
+    <div class="result">
+      <input type="submit" id="submit" name="submit" value="Submit"><br><br>
+      <label for="">Result : </label><span id="result"></span>
+    </div>
+
+    <script type="text/javascript">
+      var opa = document.getElementById("ina")
+      var opb = document.getElementById("inb")
+      var res = document.getElementById("result")
+
+      document.getElementById("submit").onclick = function(){
+        /*alert(Number(opa.value) + Number(opb.value))*/
+        var element = document.getElementsByName("op")
+        var op;
+        var value;
+
+        for(i = 0; i < element.length; i++){
+            if(element[i].checked){
+              op = element[i].value
+            }
+         }
+
+         //alert(op)
+
+         switch(op){
+           case "add": {value = Number(opa.value) + Number(opb.value); break;}
+           case "sub": {value = Number(opa.value) - Number(opb.value); break;}
+           case "mul": {value = Number(opa.value) * Number(opb.value); break;}
+           case "div": {value = Number(opa.value) / Number(opb.value); break;}
+         }
+
+         res.innerHTML = value
+      }
+
+
+
+    </script>
+  </body>
+</html>

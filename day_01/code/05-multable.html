@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Temperature Converter</title>
+  </head>
+  <body>
+    <p>
+      <label>Multiplication Table Generator</label><br>
+      <label for="num">Enter Number </label>
+
+      <input id="num" type="number" placeholder="1"
+      oninput="tablegen(this.value)"
+      onchange="tablegen(this.value)">
+    </p>
+    <hr>
+    <div class="table" id="table">
+    </div>
+
+
+  <script>
+    /* When the input field receives input, convert the value from fahrenheit to celsius */
+    function tablegen(valNum) {
+      valNum = parseFloat(valNum);
+      cleartable();
+      for(i = 1; i <= 10; i++){
+        var para = document.createElement("p");
+        var node = document.createTextNode(valNum + ' X ' + i + ' = ' + (valNum * i));
+        para.appendChild(node);
+        para.setAttribute("id", toString(i))
+
+        var element = document.getElementById("table");
+        element.appendChild(para);
+      }
+    }
+
+    function cleartable(){
+        var element = document.getElementById("table");
+        while(element.firstChild){
+          element.removeChild(element.lastChild)
+        }
+    }
+
+  </script>
+
+  </body>
+</html>
+
+<!-- Other approach could be to create child elements
+and update the inner HTML everytime a new value is
+entered -->
