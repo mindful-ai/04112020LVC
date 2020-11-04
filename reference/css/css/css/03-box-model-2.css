@@ -1,0 +1,48 @@
+*{
+  border-style: solid dashed double dotted;  /* 3 values Top, left + right, Bottom */
+                                      /* 2 values top + bottom, left + right */
+                                      /* 4 values top right bottom left */
+                                      /* 1 values top + right + bottom + left */
+}
+
+p, h4{
+  border-style: hidden;
+  /*border: 5px solid red;*/
+}
+
+p {
+  /*padding: 50px;*/
+  padding-left: 50px;
+  font-family: cursive;
+}
+
+
+.country{
+  background-color: lightblue;
+}
+
+#usa{
+  background-color: lightgrey;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+  padding: 40px;
+}
+
+#euro{
+  background-color: mediumseagreen;
+  margin: 100px 100px 100px 100px;
+  padding: 40px;
+}
+
+#asia {
+  background-color: tomato;
+  margin: 100px;
+  padding: 40px;
+}
+
+div {
+  border-radius: 20px;
+  background-color: #FF00F0;
+}

@@ -1,0 +1,110 @@
+body{
+  font-family: sans-serif;
+}
+/* input [name=search] will not work because of the space */
+
+input[name=search]{
+  border: 5px solid black;
+  border-radius: 10px;
+  background-image: url("../pics/searchicon.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 50px;
+  font-size: 30px;
+}
+
+input[name=search]:focus{
+  width: 50%
+}
+
+input[name=search]:hover{
+  background-color: rgb(207, 88, 72);
+  transition: width 0.4s ease-in-out;
+  width: 50%
+}
+
+/* --------------- CHange all labels -------------- */
+
+h3{
+  font-size: 30px;
+}
+
+h3[id=form]{
+  font-style: italic;
+}
+
+label{
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+/* Use of pseudo-element */
+/* Limited to text, HTML content cannot be inserted */
+label::after{
+  content: ":";
+}
+
+input[name=fname], input[name=mname], input[name=lname]{
+  height: 50px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  width: 50%;
+  border: none;
+  border-bottom: 5px solid red;
+  box-sizing: border-box; /* allows us to include the padding and border in an element's total width and height */
+}
+
+
+/* -------------------- Styling the slide bar ------------ */
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 50%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #b13a3a; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+/* Styling the submit and reset types */
+
+input[type=reset], input[type=submit]{
+  height: 40px;
+  width: 120px;
+  background-color: #a83e30;
+  font-size: 20px;
+  font-weight: bold;
+  
+}

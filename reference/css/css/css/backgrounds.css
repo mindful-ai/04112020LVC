@@ -1,0 +1,7 @@
+body {
+    background-color: black;
+    background-image: url('../pics/neo.png'),url('../pics/matrix2.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right top, left top;
+    background-blend-mode: lighten;
+}

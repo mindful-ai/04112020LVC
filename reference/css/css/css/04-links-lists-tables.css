@@ -1,0 +1,92 @@
+div{
+  margin: 30px;
+}
+
+a{
+  margin: 20px;
+  padding: 10px;
+  border-style: solid;
+}
+
+/* Use of pseudo classes */
+
+a:link {
+  background-color: yellow;
+}
+
+a:visited {
+  background-color: cyan;
+}
+
+a:hover {
+  background-color: lightgreen;
+}
+
+a:active {
+  background-color: hotpink;
+}
+
+/* -------------------- List styling ----------------- */
+
+ol{
+  background: slateblue;
+  padding: 20px;
+  width: 50%;
+}
+
+
+ol li{
+  background: brown;
+  padding: 5px;
+  margin-left:  35px;
+  font-weight: bold;
+}
+
+/* ----------------- Styling Tables -------------- */
+
+/*
+table, tr, td, th{
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 40px;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+*/
+
+table, tr, td, th{
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border-collapse: collapse;
+}
+
+caption{
+  padding-bottom: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+th{
+  border-top: 2px solid red;
+}
+
+th, td{
+  border-bottom: 2px solid red;
+}
+
+th{
+  background-color: lightblue;
+}
+
+tr:nth-child(even){
+  background-color: lightgrey;
+}
+
+tr:hover{
+  background-color: slateblue;
+}

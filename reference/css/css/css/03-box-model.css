@@ -1,0 +1,23 @@
+body{
+  background-color: lightgreen;
+}
+
+
+
+div {
+  font-style: italic; /* bold italic normal */
+  font-weight: bold ;   /* normal|bold|bolder|lighter|number */
+  font-size:  large;     /* medium|xx-small|x-small|small|large|x-large|xx-large|smaller|larger */
+  
+}
+
+
+/*
+font -->
+font-style
+font-variant
+font-weight
+font-size/line-height
+font-family
+
+*/

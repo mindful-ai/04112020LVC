@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+          /* Styles the grid system */
+          .grid-wrapper {
+            display: grid;
+            grid-template-columns: 300px 300px 300px;
+            grid-template-rows: 500px 200px;
+          }
+          * {box-sizing: border-box;}
+          
+          .grid-wrapper {
+            border: 2px solid #f76707;
+            border-radius: 5px;
+            background-color: #fff4e6;
+          }
+          
+          .grid-wrapper > div {
+            border: 2px solid #ffa94d;
+            border-radius: 5px;
+            background-color: #ffd8a8;
+            padding: 1em;
+            color: #d9480f;
+          }
+          
+    </style>
+</head>
+<body>
+    <div class="grid-wrapper">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+    </div>
+</body>
+</html>
