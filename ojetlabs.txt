@@ -499,6 +499,57 @@ Building and getting application ready for deployment
 
 https://apexapps.oracle.com/pls/apex/f?p=44785:50:0:::50:P50_EVENT_ID,P50_COURSE_ID:5940,260
 
+Step 1:
+
+ojet create basicapp --template=basic
+
+Step 2:
+
+index.html ->
+1. Goto Line 85
+2. Insert some content in the div and observe the changes
+
+Step 3:
+
+In js folder create two folders: views and viewModels
+Create views/helloworld.html and add the following content:
+<div>
+    <h1>Hello World!</h1>
+    <div>
+        <h6>Name : <input data-bind="textInput:name"> </h6>
+        <h6>Age  : <input data-bind="textInput:age"> </h6>
+        <hr>
+        <h3>Your name is <span data-bind="text:name"> </span> and age is <span data-bind="text:age"> </span><h3>
+    </div>
+</div>
+
+Create viewModels/helloworld.js and add the following content:
+define(['ojs/ojcore', 'knockout', 'jquery'],
+    function(oj, ko, $){
+        function helloWorldViewModel(){
+            var self = this;
+            self.name = ko.observable("Purushotham");
+            self.age  = ko.observable("35");
+        }
+        return new helloWorldViewModel();
+    }
+);
+
+Step 4:
+
+index.html ->
+Goto line 85
+Insert the following in the div  
+
+<div data-bind="ojModule: 'helloworld'">
+</div>
+
+Do you see the helloworld view??
+
+Step 5:
+main.js ->
+Include 'ojs/ojmodule' in the dependency requirements
+
 ----------------------------------------------------------------------------------------
 Lab #10 - Complete flow 
 ----------------------------------------------------------------------------------------
