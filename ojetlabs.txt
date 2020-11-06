@@ -564,6 +564,183 @@ Step #3 Explore the router component and its importance
 Step #4 Bring up the SPA
 Step #5 Build the application for release
 
+Step #1
+ojet create blankapp --template=blank
+
+Use the following code template for all views:
+<div>
+    <h1>Home</h1>
+</div>
+
+Use the following code template for all view-models:
+
+define(['ojs/ojcore', 'knockout', 'jquery'],
+    function(oj, ko, $){
+        function ViewModel(){
+            var self = this;
+
+        }
+        return new ViewModel();
+    }
+);
+-------------------------------------------------------------------------------
+Step #2
+
+index.html
+
+Put the following pieces of code in a div
+with the id "routing-container"
+
+Navigator -> Helps change the router state
+--------------------------------
+            <oj-tab-bar edge="top" data="[[dataProvider]]" selection="{{selection.path}}">
+              <template slot="itemTemplate" data-oj-as="item">
+                <oj-bind-if test="[[item.data.detail]]">
+                  <li :id="[[item.data.path]]">
+                    <a href="#">
+                      <oj-bind-text value="[[item.data.detail.label]]"></oj-bind-text>
+                    </a>
+                  </li>
+                </oj-bind-if>
+              </template>
+            </oj-tab-bar>
+
+Reflects the router state -> optional, only for studies
+-----------------------------------
+<div id="pageContent" class="oj-panel oj-bg-info-30">
+              <h3><b>Router path:</b>
+              <oj-bind-text value="[[selection.path]]"></oj-bind-text>
+              </h3>
+              <h3><b>Path label:</b>
+              <oj-bind-if test="[[selection.state]]">
+                <oj-bind-text value="[[selection.state().detail.label]]"></oj-bind-text>
+              </oj-bind-if>
+              </h3>
+            </div>
+
+Container for the views
+------------------------------------
+            <!--
+            <div data-bind="ojModule: selection.path">
+            </div>
+            -->
+            
+            <oj-module role="main" 
+                       class="oj-web-applayout-max-width oj-web-applayout-content" 
+                       config="[[moduleAdapter.koObservableConfig]]">
+            </oj-module>
+-----------------------------------
+
+
+Step #3:
+
+Router Construction:
+------------------------------------------------------
+    // Define the routes
+    var routes = [
+        { path: "", redirect: "home" }, // Default route redirects to 'dashboard'
+        { path: "home", detail: { label: "Home" } },
+        { path: "products", detail: { label: "Products" } },
+        { path: "contacts", detail: { label: "Contacts" } }
+
+    ];
+
+    // Create ADP with partial array, excluding first redirect route
+    this.dataProvider = new ArrayDataProvider(routes.slice(1), {
+        keyAttributes: "path"
+    });
+
+    // Create the router with the routes
+    var router = new CoreRouter(routes, {
+        urlAdapter: new UrlParamAdapter()
+    });
+
+    // Create an observable to react to the current router state path
+    this.selection = new KnockoutRouterAdapter(router);
+
+    // Create the module adaptor
+    this.moduleAdapter = new ModuleRouterAdapter(router);
+
+    // Synchronize the router, causing it to go to its default route
+    router.sync();
+
+Dependencies:
+--------------------------------------------------------
+define([
+  "ojs/ojcorerouter",
+  "ojs/ojmodulerouter-adapter",
+  "ojs/ojknockoutrouteradapter",
+  "ojs/ojurlparamadapter",
+  "ojs/ojarraydataprovider",
+  "knockout",
+  "ojs/ojbootstrap",
+  "ojs/ojknockout",
+  "ojs/ojnavigationlist",
+  "ojs/ojbutton",
+  "ojs/ojmodule-element"
+], function(
+  CoreRouter,
+  ModuleRouterAdapter,
+  KnockoutRouterAdapter,
+  UrlParamAdapter,
+  ArrayDataProvider,
+  ko,
+  Bootstrap
+) 
+
+
+Step #4:
+
+main.js ->
+
+// Apply the ko bindings
+ko.applyBindings(main, document.getElementById("routing-container"), this);
+
+// Update dependencies
+'mainViewModel'
+'ojs/ojmodule'
+
+
+Step #5:
+
+after_build hook script
+---------------------------------------------------
+'use strict';
+const fs = require('fs');
+const archiver = require('archiver');
+module.exports = function (configObj) {
+  return new Promise((resolve, reject) => {
+   console.log("Running after_build hook.");
+
+    //change the extension of the my-archive.xxx file from .war to .zip as needed
+    const output = fs.createWriteStream('my-archive.war');
+    //leave unchanged, compression is the same for WAR or Zip file
+    const archive = archiver('zip');
+  
+    output.on('close', () => {
+      console.log('Files were successfully archived.');
+      resolve();
+    });
+  
+    archive.on('warning', (error) => {
+      console.warn(error);
+    });
+  
+    archive.on('error', (error) => {
+      reject(error);
+    });
+  
+    archive.pipe(output);
+    archive.directory('web', false);
+    archive.finalize();
+  });
+};
+
+build for release
+-----------------------------------------------------
+
+ojet build web --release
+
 
 # Important Links 
 
