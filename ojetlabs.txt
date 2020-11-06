@@ -634,6 +634,19 @@ Container for the views
 
 Step #3:
 
+A. Create a view model for index.html say mainController.js
+B. Copy and modify this piece of code in mainController.js
+define(['ojs/ojcore', 'knockout', 'jquery'],
+    function(oj, ko, $){
+        function ViewModel(){  //mainViewModel
+            var self = this;
+
+        }
+        return new ViewModel();
+    }
+);
+C. Build the router as shown below:
+
 Router Construction:
 ------------------------------------------------------
     // Define the routes
